@@ -1,0 +1,18 @@
+.button {
+  width: 100px;
+  border-radius: 8px;
+  padding: 0.5em;
+  border: none;
+  text-transform: uppercase;
+  margin: 1em 1em;
+}
+
+.clear_button {
+  color: white;
+  background-color: var(--color-danger);
+}
+
+.submit_button {
+  color: var(--color-background);
+  background-color: var(--color-primary);
+}
