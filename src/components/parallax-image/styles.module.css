@@ -26,14 +26,12 @@
   width: 200px;
   height: 200px;
   background-image: url("../../images/sun.svg");
-  z-index: 5;
 }
 
 .card2_dark {
   width: 200px;
   height: 200px;
   background-image: url("../../images/sleeping-moon.png");
-  z-index: 5;
 }
 
 .card3 {
@@ -47,7 +45,6 @@
   width: 27em;
   height: 31em;
   background-image: url("../../images/me_big.png");
-  z-index: 100;
   filter: drop-shadow(7px 7px 7px #000000);
 }
 
