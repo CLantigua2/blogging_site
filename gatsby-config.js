@@ -30,6 +30,8 @@ module.exports = {
       resolve: `gatsby-plugin-s3`,
       options: {
         bucketName: "carlos-lantigua-blog-site",
+        protocol: "https",
+        hostname: "www.carloslantigua.dev",
       },
     },
     {
