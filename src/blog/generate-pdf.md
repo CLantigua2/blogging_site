@@ -7,7 +7,7 @@ tags: pdf-generation, nodejs, puppeteer, d3, handlebars, javascript
 ---
 
 Looking for a way to create a design-heavy, data-driven, beautifully styled PDF report — server-side with similar tools to what you are already using on the front-end? Stop your Google search. You’ve come to the right place. I was in the same boat as you a few months ago while helping a client with this exact problem. In order to accomplish this feat, I developed a four-step solution using Puppeteer, D3, and handlebars. In this post, I’ll give you step by step instructions on creating server-side pdf reports. Let’s dive in.
-![](https://miro.medium.com/max/782/0*XaujefLUYzEMEZMz.png)
+<img src="https://miro.medium.com/max/782/0*XaujefLUYzEMEZMz.png" alt="" class="lazyload" />
 
 > Example of a D3 generated page using handlebars and puppeteer
 

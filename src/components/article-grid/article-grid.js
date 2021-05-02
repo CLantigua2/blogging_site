@@ -17,7 +17,7 @@ export default function ArticleGrid({ articles }) {
               {node.frontmatter.image ? (
                 <img
                   src={node.frontmatter.image}
-                  className={css.image}
+                  className={`${css.image} lazyload`}
                   alt={node.title}
                 />
               ) : (

@@ -8,7 +8,7 @@ tags: bootcamps, guide, lambda school
 
 How to pick the school that is right for you..
 
-![People working on a project together](https://miro.medium.com/max/6720/1*00ENHdYZX2uvgCSF4d_X6A.jpeg)
+<img alt="People working on a project together" src="https://miro.medium.com/max/6720/1*00ENHdYZX2uvgCSF4d_X6A.jpeg" class="lazyload" />
 
 Photo by [NESA by Makers](https://unsplash.com/@nesabymakers?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/code-bootcamp?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
@@ -26,7 +26,7 @@ First let’s talk about why you should consider a bootcamp over a traditional 4
 4.  Bootcamps are more like trade schools that aim to teach specialized skills that you will need to get a job.
 5.  Some bootcamps will invest a lot more into helping you find a job. This can include helping with resumes, LinkedIn profile, organizing your Github dashboard, giving tips on portfolios and even placing you in front of hiring partners for interviews.
 
-![Online Bootcamps graduate chart from 2017 to 2020](https://miro.medium.com/max/967/1*wWp0LZkQZTOJ2i6uH5a-Rg.png)
+<img alt="Online Bootcamps graduate chart from 2017 to 2020" src="https://miro.medium.com/max/967/1*wWp0LZkQZTOJ2i6uH5a-Rg.png" class="lazyload" />
 
 State of the bootcamp market report 2020 — [CareerKarma](CareerKarma.com)
 
@@ -36,7 +36,7 @@ If bootcamps are so great, why do people still pay all of that money and spend s
 
 # So How do You know if a particular code bootcamp is right for you?
 
-![man standing in the middle a fork in the road](https://miro.medium.com/max/644/1*dEScGY6PWAzdZSdz1uMwuw.png)
+<img alt="man standing in the middle a fork in the road" src="https://miro.medium.com/max/644/1*dEScGY6PWAzdZSdz1uMwuw.png" class="lazyload" />
 
 Photo by Vladislav Babienko
 

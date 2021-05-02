@@ -46,6 +46,10 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-images`,
+          },
+          `gatsby-remark-lazy-load`,
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: "language-",
