@@ -5,6 +5,7 @@
   border: none;
   text-transform: uppercase;
   margin: 1em 1em;
+  cursor: pointer;
 }
 
 .clear_button {

@@ -25,30 +25,29 @@ export default function Home({ data }) {
                 Twitter.
               </p>
 
-              <ul>
-                <li style={{ listStyleType: "none", textDecoration: "none" }}>
-                  <Link
-                    to="https://www.linkedin.com/in/carlos-lantigua/"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faLinkedin}
-                      style={{ width: 50, height: 50, color: "#0C66C2" }}
-                    />
-                  </Link>
-                </li>
-                <li style={{ listStyleType: "none", textDecoration: "none" }}>
-                  <Link
-                    to="https://twitter.com/CodeLantigua"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTwitter}
-                      style={{ width: 50, height: 50, color: "#1DA1F1" }}
-                    />
-                  </Link>
-                </li>
-              </ul>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Link
+                  to="https://www.linkedin.com/in/carlos-lantigua/"
+                  style={{
+                    backgroundImage: "none",
+                    margin: "1em",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    style={{ width: 50, height: 50, color: "#0C66C2" }}
+                  />
+                </Link>
+                <Link
+                  to="https://twitter.com/CodeLantigua"
+                  style={{ backgroundImage: "none" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    style={{ width: 50, height: 50, color: "#1DA1F1" }}
+                  />
+                </Link>
+              </div>
               <form
                 method="post"
                 action="https://getform.io/f/48bce711-7d99-4810-b504-dab9843ba9ea"
@@ -57,7 +56,7 @@ export default function Home({ data }) {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(2, 1fr)",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
                   }}
                 >
                   <Input
@@ -75,7 +74,7 @@ export default function Home({ data }) {
                   id="message"
                   rows="5"
                 />
-                <Input label="file" type="file" name="file" />
+                <Input label="Upload a file" type="file" name="file" />
                 <Button variant="button" type="submit" value="Send" />
                 <Button variant="input" type="reset" value="Clear" />
               </form>
