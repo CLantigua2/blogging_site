@@ -18,7 +18,6 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
     const isBroswer = typeof window !== undefined
     if (scrollTo && isBroswer) {
       const element = document.getElementById(scrollTo)
-      console.log({ scrollTo })
       window.scrollTo({
         behavior: "smooth",
         top: element.offsetTop,

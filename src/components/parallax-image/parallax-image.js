@@ -16,7 +16,6 @@ function ParallaxImage() {
     config: config.gentle,
   }))
 
-  console.log({ colorMode })
   return (
     <div className={css.block}>
       <button

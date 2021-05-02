@@ -12,8 +12,6 @@ const ReadProgress = ({ parentWidth }) => {
     })
   }, [scrollYProgress])
 
-  console.log({ parentWidth })
-
   return (
     <motion.div
       className={css.reading_progress}
