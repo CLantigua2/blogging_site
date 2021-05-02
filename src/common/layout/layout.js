@@ -45,7 +45,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
         <div className={css.left_wrapper}>
           <div className={css.left_side_image_container}>
             <StaticImage
-              src="../../images/me.jpg"
+              src="../../images/Carlos-Lantigua-headcrop-small.jpg"
               alt="Carlos Lantigua"
               width={75}
               height={80}
@@ -54,6 +54,9 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
               style={{
                 width: "100%",
                 height: "100%",
+                borderRadius: "65% 75%",
+                filter: "grayscale(1)",
+                objectFit: "cover",
               }}
               className={css.avatar}
             />
