@@ -196,14 +196,16 @@ You’ll notice this pattern is also currently similar to our apps as well. Befo
 ```
 
   <p id="adc0" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Woahhh 👀 That looks a little different than the <code class="ia lf lg lh lb b">getUsers</code> method? You're correct!! This method presents a few key differences from the previous.</p><ol class=""><li id="0f6c" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd ji jj jk dw" data-selectable-paragraph=""><code class="ia lf lg lh lb b">@Get</code> decorator now has a <code class="ia lf lg lh lb b">:id</code> inside of it. If we remember our earlier coverage of this decorator, adding a string inside of it appends to the route. In this case, is creating a variable for the user's id for us. This will come to us in the form of a parameter.</li><li id="a94a" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph=""><code class="ia lf lg lh lb b">@Param</code> was added to the parameters for the <code class="ia lf lg lh lb b">getUserById</code>. This is a built-in Nest decorator that allows us to define what our params look like for this endpoint. In the strings, we're able to give it the name of <code class="ia lf lg lh lb b">id</code> then use typescript to define what an id should be, in our case it will come in as a string. We'll need to change this later as we'll be using numbers as a string.</li><li id="dd09" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph="">Our service call is using <code class="ia lf lg lh lb b">(Number(id))</code>, this is because our ids will be numbers so we're having to manually typecast them from a <code class="ia lf lg lh lb b">string</code> to a <code class="ia lf lg lh lb b">number</code>. We'll explore how Nest can do this for us later with Pipes.</li></ol><p id="ae09" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Now that is out of the way, let’s check out our <code class="ia lf lg lh lb b">users.service.ts</code> file</p>
-  
-  ```TypeScript
+
+```TypeScript
   import { Injectable } from '@nestjs/common';
-  
+
   @Injectable()
 export class UsersService {}
 ```
+
 <p id="8122" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Wow, so much empty!! If you used the scaffolding command then you might actually have some stuff written in here thanks to the <code class="ia lf lg lh lb b">CRUD</code> option which is pretty nice, we're going to work this out from scratch. First, because we won't be using a database for this article (later article).. we'll create an array of users to interact with. Note that normally this is where you would introduce an ORM rather than saving data in memory like we're about to do. Let's add that array in now.</p>
+
 ```TypeScript
 @Injectable()
 export class UsersService {
@@ -214,21 +216,26 @@ export class UsersService {
     { id: 3, name: 'Norbert' },
     { id: 4, name: 'Alex' },
   ];
-  ```
+```
+
   <p id="00ed" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Great!! Now we have users that we can interact with. We can now move on to creating our services.</p>
-  ```TypeScript
-  findAll(): any {
-      return this.users;
-  }
-  findById(userId: number): User {
-      return this.users.find((user) =&gt; user.id === userId);
-  }
-  ```
+
+```TypeScript
+findAll(): any {
+    return this.users;
+}
+findById(userId: number): User {
+    return this.users.find((user) =&gt; user.id === userId);
+}
+```
+
   <p id="4641" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">That’s it!! We’re done, we can now put up a Pull Request for review, pack our stuff and go home. Just kidding, this is where the fun begins actually. In express, normally when we get to this point.. we would end up having to open up <code class="ia lf lg lh lb b">Postman</code> or <code class="ia lf lg lh lb b">Insomnia</code> to test our endpoint and validate responses and exceptions. To me, this is daunting and doesn't really contribute to anything but our own personal testing. Instead, what we can do is include swagger documentation. So let's take this time to talk about swagger, what it is and what it can do for us and our team.</p><h1 id="76e0" class="jr js fn au jt ju jv il jw jx jy ip jz ka kb kc kd ke kf kg kh ki kj kk kl km dw" data-selectable-paragraph="">Toss In Some Swagger 😎</h1><p id="a224" class="ig ih fn ii b ij kn il im in ko ip iq ir kp it iu iv kq ix iy iz kr jb jc jd db dw" data-selectable-paragraph="">Swagger is an interactive documentation tool that allows you to detail your endpoints. You do these multiple ways such as by visiting their <a href="https://swagger.io/" class="bp lx" rel="noopener nofollow">website</a> and utilizing their API tools to generate documentation. We’ll be taking a different approach which will allow us to implement the documentation as we work and generate the swagger docs whenever someone hits a <code class="ia lf lg lh lb b">/docs</code> route. First, we'll need to install swagger UI into our application.</p>
-  
-  ```Bash
-  $ npm install --save @nestjs/swagger swagger-ui-express
-  ```
+
+```Bash
+$ npm install --save @nestjs/swagger swagger-ui-express
+
+```
+
   <p id="3493" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Because Nest uses ExpressJS, we’re allowed to use modules that are meant for Express as part of Nest. This means that we can get the best of both worlds. Now that we have the swagger UI installed, we can go into our <code class="ia lf lg lh lb b">main.ts</code> file to add in the middleware and pass some configuration options.</p>
 
 ```TypeScript
@@ -345,8 +352,8 @@ createUser(createUserDto: CreateUserDto): User {
   }
 ```
 
-  <p id="061c" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">This is great as we now know the shape of our response and body objects. Earlier, however, we talked about validation being a built-in part of NestJS. Normally at this point, we would either handwrite a bunch of validation for our params or bring in a library to attempt to do it for us. Both of these solutions require some boilerplate and intrusive logic management. Nest, this is a lot simpler. We can start by using the <code class="ia lf lg lh lb b">ValidationPipe</code>, you can read more about this <a href="https://docs.nestjs.com/techniques/validation#using-the-built-in-validationpipe" class="bp lx" rel="noopener nofollow">here</a> in the docs but essentially, this provides us with access to the following already included libraries.</p><ol class=""><li id="b52d" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd ji jj jk dw" data-selectable-paragraph=""><a href="https://www.npmjs.com/package/class-validator" class="bp lx" rel="noopener nofollow">Class validator</a> — A decorator validator that uses <code class="ia lf lg lh lb b">validator.js</code> under the hood.</li><li id="6402" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph=""><a href="https://www.npmjs.com/package/class-transformer" class="bp lx" rel="noopener nofollow">Class Transformer</a> — This allows you to transform a plain object to some instance of class and versa.</li></ol><p id="c138" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">To add this to our Nest project, we can do so in our <code class="ia lf lg lh lb b">main.ts</code>.</p>
-  
+  <p id="061c" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">This is great as we now know the shape of our response and body objects. Earlier, however, we talked about validation being a built-in part of NestJS. Normally at this point, we would either handwrite a bunch of validation for our params or bring in a library to attempt to do it for us. Both of these solutions require some boilerplate and intrusive logic management. Nest, this is a lot simpler. We can start by using the <code class="ia lf lg lh lb b">ValidationPipe</code>, you can read more about this <a href="https://docs.nestjs.com/techniques/validation#using-the-built-in-validationpipe" class="bp lx" rel="noopener nofollow">here</a> in the docs but essentially, this provides us with access to the following already included libraries.</p><ol class=""><li id="b52d" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd ji jj jk dw" data-selectable-paragraph=""><a href="https://www.npmjs.com/package/class-validator" class="bp lx" rel="noopener nofollow">Class validator</a> — A decorator validator that uses <code class="ia lf lg lh lb b">validator.js</code> under the hood.</li><li id="6402" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph=""><a href="https://www.npmjs.com/package/class-transformer" class="bp lx" rel="noopener nofollow">Class Transformer</a> — This allows you to transform a plain object to some instance of class and versa.</li></ol><p id="c138" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">To add this to our Nest project, we can do so in our main.ts.</p>
+
 ```TypeScript
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
@@ -365,12 +372,10 @@ const document = SwaggerModule.createDocument(app, config);
 SwaggerModule.setup('/docs', app, document);
 await app.listen(3000);
 }
-
 bootstrap();
+```
 
-````
-
-<p id="da20" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Now we can begin taking advantage of this by going into our <code class="ia lf lg lh lb b">users.controller.ts</code> and some decorators and pipes.</p>
+Now we can begin taking advantage of this by going into our users.controller.ts and some decorators and pipes.
 
 ```TypeScript
 // the import
@@ -383,19 +388,20 @@ getUserById(@Param('id', ParseIntPipe) id: number): User {
   createUser(@Body() body: CreateUserDto): User {
       return this.usersService.createUser(body);
   }
-````
+```
 
   <ol class=""><li id="33dd" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd ji jj jk dw" data-selectable-paragraph=""><code class="ia lf lg lh lb b">@param()</code> - This decorator is used to validate request parameters. In this case, we're using it to validate that our id is a number now instead of a string.</li><li id="71f9" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph=""><code class="ia lf lg lh lb b">ParseIntPipe</code> - Because of the nature of JSON parsing, the id comes in as a <code class="ia lf lg lh lb b">string</code> but our database ids are all <code class="ia lf lg lh lb b">numbers</code>. This pipe will type-cast the id for us from a string to a number so that we can remove the old logic forcing us to do it ourselves.</li><li id="37a2" class="ig ih fn ii b ij jm il im in jn ip iq ir jo it iu iv jp ix iy iz jq jb jc jd ji jj jk dw" data-selectable-paragraph=""><code class="ia lf lg lh lb b">@Body()</code> - This decorator allows us to validate incoming items coming through the request body. This means that if an issue is found at this level, we won't have to write logic to capture this and send a user-friendly error, Nest will take care of this for us. But how does it know</li></ol><p id="d11d" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">Now we can go into our DTO file and further define any constraints that we would like.</p>
-  
-  ```TypeScript
-  import { IsAlphanumeric, MaxLength, IsNotEmpty } from 'class-validator';
-  export class CreateUserDto {
-    @IsNotEmpty() // validates name is not empty
-  @IsAlphanumeric() // validates name is alphanumeric
-  @MaxLength(10) // validates name is no longer than 10 chars
-  name: string;
+
+```TypeScript
+import { IsAlphanumeric, MaxLength, IsNotEmpty } from 'class-validator';
+export class CreateUserDto {
+  @IsNotEmpty() // validates name is not empty
+@IsAlphanumeric() // validates name is alphanumeric
+@MaxLength(10) // validates name is no longer than 10 chars
+name: string;
 }
 ```
+
 <p id="4d09" class="ig ih fn ii b ij ik il im in io ip iq ir is it iu iv iw ix iy iz ja jb jc jd db dw" data-selectable-paragraph="">The above validation would normally take an entire system of handwritten regex wizardry and other conditional logic. We were able to write a few lines and add this validation. We can even go into our Swagger UI docs and test these out on our POST and GET by id endpoints to see the different error messages that we get.</p><h1 id="5305" class="jr js fn au jt ju jv il jw jx jy ip jz ka kb kc kd ke kf kg kh ki kj kk kl km dw" data-selectable-paragraph="">Queries — the hidden jewel of RESTful API’s</h1><p id="7af8" class="ig ih fn ii b ij kn il im in ko ip iq ir kp it iu iv kq ix iy iz kr jb jc jd db dw" data-selectable-paragraph="">Queries often require some parsing and logic to define, NestJS lets us define and validate this all in one line in our <code class="ia lf lg lh lb b">users.controller.ts</code>.</p>
 
 ```TypeScript

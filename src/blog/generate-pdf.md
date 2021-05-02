@@ -192,7 +192,7 @@ await page.emulateMedia("screen");
 We’ll start by creating our first handlebars template file for our report. Notice that the syntax looks and acts just like regular HTML.
 
 ```HTML
-our_report.hbs
+**our_report.hbs**
 
 <!DOCTYPE html>
 <html lang="en">
@@ -292,13 +292,16 @@ html, body {
 
 Since we created a style.hbs file, we’ll want to register as a partial so that we can just plug it into our template. This way we won’t have to jam all of our styles into our main template file and can reuse the code if we need to.
 
-<pre class="ie if ig ih ii km kn do"><span id="88ac" class="cr ko je ff kp b co kq kr s ks" data-selectable-paragraph="">hbs.registerPartial("style", fs.readFileSync(
+```JavaScript
+hbs.registerPartial("style", fs.readFileSync(
     path.join(__dirname, "/path/to/style.hbs"), "utf-8"),
-);</span></pre>
+);
+```
 
 Now that it has been registered as a handlebars partial, we can simply bring it into our template.
 
-<pre class="ie if ig ih ii km kn do"><span id="6376" class="cr ko je ff kp b co kq kr s ks" data-selectable-paragraph="">{{> styles }}
+```HTML
+{{> styles }}
 </head>
   <body>
 	  <div class="page">
@@ -308,23 +311,30 @@ Now that it has been registered as a handlebars partial, we can simply bring it 
 		 {{/each}}
 		{{/with }}
 	  </div>
-  </body></span></pre>
+  </body>
+```
 
 # Step four: adding in some d3
 
 We already brought in the d3 CDN link into our template header
 
-<pre class="ie if ig ih ii km kn do"><span id="425c" class="cr ko je ff kp b co kq kr s ks" data-selectable-paragraph=""><script src="https://d3js.org/d3.v5.min.js"></script></span></pre>
+```HTML
+<script src="https://d3js.org/d3.v5.min.js"></script>
+```
 
 Now it’s time to create a partial for our d3 script. We’ll do this using the same method that we used to create the style.hbs partial. Register a d3_script.hbs file as a handlebars helper.
 
-<pre class="ie if ig ih ii km kn do"><span id="49f9" class="cr ko je ff kp b co kq kr s ks" data-selectable-paragraph="">hbs.registerPartial("d3_script", fs.readFileSync(
+```JavaScript
+hbs.registerPartial("d3_script", fs.readFileSync(
 	path.join(__dirname, "/path/to/d3_script.hbs"), "utf-8"),
-);</span></pre>
+);
+```
 
 Then we can drop it into our main template as needed. Also note the canvas anchor div used in the template to give our D3 a foundation to start from.
 
-<pre class="ie if ig ih ii km kn do"><span id="650a" class="cr ko je ff kp b co kq kr s ks" data-selectable-paragraph="">my_template.hbs</span><span id="7b08" class="cr ko je ff kp b co kw kx ky kz la kr s ks" data-selectable-paragraph="">{{/each}}
+```HTML
+**my_template.hbs**
+		{{/each}}
 	{{/with }}
   </div>
   <div class="canvas"></div>
@@ -335,11 +345,5 @@ const svg = d3
 	.select('#canvas')
 	.append('svg')
 	.attr('viewBox', [-width / 2, -height / 2, width, height]);
-</script></span></pre>
-
-</div>
-
-</div>
-
-</section>
-````
+</script>
+```

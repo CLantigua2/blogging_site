@@ -52,6 +52,7 @@ export default function Home({ data }) {
               <form
                 method="post"
                 action="https://getform.io/f/48bce711-7d99-4810-b504-dab9843ba9ea"
+                enctype="multipart/form-data"
               >
                 <div
                   style={{
@@ -74,6 +75,7 @@ export default function Home({ data }) {
                   id="message"
                   rows="5"
                 />
+                <Input label="file" type="file" name="file" />
                 <Button variant="button" type="submit" value="Send" />
                 <Button variant="input" type="reset" value="Clear" />
               </form>

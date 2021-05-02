@@ -10,7 +10,7 @@ module.exports = {
     title: "Carlos Lantigua",
     titleTemplate: "Random Tech Stuff",
     author: "Carlos Lantigua",
-    url: "http://www.carlos-lantigua.com",
+    url: "http://www.thebrowndev.com",
     image: `${__dirname}/src/images/me.jpg`,
     description:
       "This site will be used to dump all of my blogs and projects. A place to keep track of my progression and learnings throughout my time as a Software Developer.",
@@ -31,7 +31,7 @@ module.exports = {
       options: {
         bucketName: "carlos-lantigua-blog-site",
         protocol: "https",
-        hostname: "www.carloslantigua.dev",
+        hostname: "www.thebrowndev.com",
       },
     },
     {
@@ -118,7 +118,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `carloslantigua.com`,
+        name: `thebrowndev.com`,
         short_name: `CL`,
         start_url: `/`,
         background_color: `#f7f0eb`,
