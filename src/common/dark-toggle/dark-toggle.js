@@ -10,7 +10,10 @@ const DarkToggle = () => {
   const { colorMode, setColorMode } = useContext(ThemeContext)
 
   useEffect(() => {
-    const colorMode = localStorage.getItem(COLOR_MODE_KEY)
+    let colorMode = localStorage.getItem(COLOR_MODE_KEY)
+    if (!colorMode) {
+      colorMode = "light"
+    }
     setColorMode(colorMode)
   }, [colorMode, setColorMode])
 
