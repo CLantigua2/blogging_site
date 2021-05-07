@@ -44,7 +44,12 @@ const DarkToggle = () => {
         checked={colorMode === "dark"}
         tabIndex="0"
       />
-      <label className={css.label} htmlFor="chk" tabIndex="-1">
+      <label
+        className={css.label}
+        htmlFor="chk"
+        tabIndex="-1"
+        id="color-mode-icons"
+      >
         <FontAwesomeIcon icon={faMoon} className={css.fa_moon} />
         <FontAwesomeIcon icon={faSun} className={css.fa_moon} />
         <div className={css.ball}></div>
