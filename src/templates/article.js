@@ -7,6 +7,7 @@ import Card from "../common/card"
 import SEO from "../components/SEO"
 import ReadProgress from "../common/read-progress/read-progress"
 import { useDimensions } from "../hooks/use-dimensions"
+import Reader from "../components/reader"
 
 export default function Article({ data }) {
   const parentRef = useRef(null)
@@ -24,6 +25,7 @@ export default function Article({ data }) {
     }
     return result
   }
+
   return (
     <>
       <SEO />
@@ -36,6 +38,7 @@ export default function Article({ data }) {
               <p>Read Time: {formatTimeToRead(post.timeToRead)}</p>
               <p>Posted {post.frontmatter.date}</p>
             </div>
+            <Reader textToRead={post.rawMarkdownBody} />
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </section>
           <section className={css.article_section}>
@@ -61,6 +64,7 @@ export const query = graphql`
         tags
         date(formatString: "DD MMMM, YYYY")
       }
+      rawMarkdownBody
     }
   }
 `

@@ -1,0 +1,40 @@
+.wrapper {
+  height: 100%;
+  margin: 0 auto;
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.player_main_control {
+  display: flex;
+  flex: 0 0 55px;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  background-color: hsla(217, 89%, 61%, 1);
+  color: white;
+  border-radius: 50%;
+}
+
+.control_play_pause {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.control_icon__play {
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
