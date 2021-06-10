@@ -5,14 +5,14 @@ import ArticleGrid from "../components/article-grid"
 import ScrollContext from "../context/scrollContext"
 import Card from "../common/card"
 import CardContent from "../common/card-content/card-content"
-import SEO from "../components/SEO"
+import Seo from "../components/seo"
 
 export default function Home({ data }) {
   const [scrollTo, setScrollTo] = useState(null)
 
   return (
     <>
-      <SEO />
+      <Seo />
       <ScrollContext.Provider value={[scrollTo, setScrollTo]}>
         <Layout>
           <div>

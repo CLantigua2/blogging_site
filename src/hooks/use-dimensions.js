@@ -1,15 +1,26 @@
-import { useEffect, useRef } from "react"
+import { useRef, useState, useEffect } from "react"
+import ResizeObserver from "resize-observer-polyfill"
 
-// Naive implementation - in reality would want to attach
-// a window or resize listener. Also use state/layoutEffect instead of ref/effect
-// if this is important to know on initial client render.
-// It would be safer to  return null for unmeasured states.
+const initialState = { width: 0, height: 0 }
+//  ref is the reference to the element whose height and with is required
+//  const divRef = useRef(null);
+//  const { height, width } = useDimension(divRef);
+//  <div ref={divRef}>
 export const useDimensions = ref => {
-  const dimensions = useRef({ width: 0, height: 0 })
-  useEffect(() => {
-    dimensions.current.width = ref.current.offsetWidth
-    dimensions.current.height = ref.current.offsetHeight
-  }, [ref])
+  const [dimensions, setdDimensions] = useState(initialState)
+  const resizeObserverRef = useRef(null)
 
-  return dimensions.current
+  useEffect(() => {
+    resizeObserverRef.current = new ResizeObserver((entries = []) => {
+      entries.forEach(entry => {
+        const { width, height } = entry.contentRect
+        setdDimensions({ width, height })
+      })
+    })
+    if (ref.current) resizeObserverRef.current.observe(ref.current)
+    return () => {
+      if (resizeObserverRef.current) resizeObserverRef.current.disconnect()
+    }
+  }, [ref])
+  return dimensions
 }

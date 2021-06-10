@@ -7,12 +7,12 @@ import CardContent from "../common/card-content/card-content"
 import PropgressBar from "../common/progress-bar"
 import { skills } from "../constants/"
 import VisibilitySensor from "react-visibility-sensor"
-import SEO from "../components/SEO"
+import Seo from "../components/seo"
 
 export default function About({ data }) {
   return (
     <>
-      <SEO />
+      <Seo />
       <Layout>
         <Card>
           <CardContent>

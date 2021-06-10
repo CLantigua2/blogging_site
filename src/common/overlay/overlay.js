@@ -7,7 +7,7 @@ import { MenuToggle } from "../menu-toggle/menu-toggle"
 
 const overlayStyle = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    clipPath: `circle(${800 * 2 + 200}px at 40px 40px)`,
     opacity: 1,
     transition: {
       type: "spring",
@@ -16,13 +16,13 @@ const overlayStyle = {
     },
   }),
   closed: {
-    clipPath: "circle(30px at 40px 40px)",
+    clipPath: "circle(0px at 40px 40px)",
     opacity: 0,
     transition: {
-      delay: 0.5,
+      delay: 0.2,
       type: "spring",
-      stiffness: 400,
-      damping: 40,
+      stiffness: 300,
+      damping: 100,
     },
   },
 }
@@ -40,11 +40,9 @@ const Overlay = () => {
       ref={containerRef}
       className={css.nav}
     >
-      <motion.div
-        className={css.background}
-        variants={overlayStyle}
-      ></motion.div>
-      <Navigation toggle={() => toggleOpen()} />
+      <motion.div className={css.background} variants={overlayStyle}>
+        <Navigation toggle={() => toggleOpen()} />
+      </motion.div>
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.div>
   )

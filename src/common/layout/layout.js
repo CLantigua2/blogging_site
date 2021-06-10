@@ -81,6 +81,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
                 </a>
               </li>
               <ListLink to="/contact/">Contact</ListLink>
+              <ListLink to="/bored/">Bored</ListLink>
             </ul>
           </header>
           <div className={css.mobileOnly}>

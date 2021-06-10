@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 const query = graphql`
-  query SEO {
+  query Seo {
     site {
       siteMetadata {
         defaultTitle: title
@@ -20,7 +20,7 @@ const query = graphql`
   }
 `
 
-const SEO = ({ title, description, image, article }) => {
+const Seo = ({ title, description, image, article }) => {
   const [pathname, setPathname] = useState("/")
 
   useEffect(() => {
@@ -76,4 +76,4 @@ const SEO = ({ title, description, image, article }) => {
   )
 }
 
-export default SEO
+export default Seo

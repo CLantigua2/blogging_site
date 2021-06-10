@@ -3,7 +3,7 @@ import Layout from "../common/layout"
 import { graphql, Link } from "gatsby"
 import Card from "../common/card"
 import CardContent from "../common/card-content/card-content"
-import SEO from "../components/SEO"
+import Seo from "../components/seo"
 import Input from "../common/input"
 import Textarea from "../common/textarea/textarea"
 import Button from "../common/button"
@@ -13,7 +13,7 @@ import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
 export default function Home({ data }) {
   return (
     <>
-      <SEO />
+      <Seo />
       <Layout>
         <div>
           <Card>
