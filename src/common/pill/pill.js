@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import * as css from "./index.module.css"
 
 const Pill = ({ text, pillHasBeenClicked, selected }) => {

@@ -63,6 +63,8 @@ What doesn’t TypeScript do for you?
 *   These browser engines include steps for optimizations, execution, and garbage collection through separate threads that become responsible for each action respectively. The optimization process is where it caches values and types that it has observed through repeated calls. This allows the V8 engine to make some smart assumptions about the types of parameters to expect on a function call it has previously seen to make future assumptions. If its assumption is correct based on the data it collected previously, it can bypass the process required to identify the properties of the object and instead use the previously in-memory stored information. This process is known as **Inline Caching**.
 
     // simplified flow for this process with pseudo-code
+
+```Bash
     key is foo
     value is bar
     
@@ -77,6 +79,7 @@ What doesn’t TypeScript do for you?
     		gather all of its properties and store them in memory for the next time we see it. 
     		apply these properties to the current value
     continue...
+```
 
 *   Doing optimizations can be taxing to the engine as it requires more memory for caching and processing. JavaScript dynamic typing means that a value can be a string at one instance, and a number at the next. Objects are increasingly difficult due to their fluid nature. During a loop, the browser engine will continually verify the types against the previous instances to decide if they will have the same properties or need to be given a list of newer ones.
 

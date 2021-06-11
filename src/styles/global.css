@@ -35,6 +35,10 @@ h6 {
   color: var(--color-text);
 }
 
+code {
+  font-size: 1.6rem !important;
+}
+
 h6 {
   font-size: 1.8rem;
 }
