@@ -10,11 +10,16 @@
   transition: color 0.2s ease, background-color 0.2s ease, background 0.2s ease;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
   height: 100%;
   width: 100vw;
+  font-size: 1.8rem;
 }
 
 p,
@@ -30,6 +35,27 @@ h6 {
   color: var(--color-text);
 }
 
+h6 {
+  font-size: 1.8rem;
+}
+h5 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
 .header {
   display: inline-block;
   border-bottom: 1px solid;
@@ -49,7 +75,7 @@ h6 {
 * and overflow that we removed from <pre>.
 */
 .gatsby-highlight {
-  font-size: 1rem;
+  font-size: 1.6rem;
   background-color: #080808;
   border-radius: 0.3em;
   margin: 0.5em 0;
@@ -108,7 +134,7 @@ a {
   margin-top: 2rem;
   margin-left: 0;
   list-style: none;
-  font-size: 30px;
+  font-size: 3rem;
   display: flex;
   flex-direction: column;
   text-align: left;

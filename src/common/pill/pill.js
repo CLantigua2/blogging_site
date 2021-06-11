@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import * as css from "./index.module.css"
 
-const Pill = ({ text }) => {
+const Pill = ({ text, pillHasBeenClicked, selected }) => {
   const getCode = string => {
     const removeHash = string.replace("#", "")
     let values = []
@@ -22,16 +22,26 @@ const Pill = ({ text }) => {
     return `hsl(${colorCount}, 80%,${85 + 10 / 1.4}%)`
   }
 
+  const isClickable = typeof pillHasBeenClicked === "function"
+
+  const handleSelectingTag = () => {
+    pillHasBeenClicked(text)
+  }
+
   return (
-    <div
+    <button
       className={css.pill}
+      onClick={() => isClickable && handleSelectingTag()}
       style={{
         background: getBackgroundColor(text),
         filter: "hue-rotate(90deg)",
       }}
     >
-      <p>{text}</p>
-    </div>
+      <p>
+        {text}{" "}
+        {isClickable ? selected && <span class={css.selected}>*</span> : null}
+      </p>
+    </button>
   )
 }
 

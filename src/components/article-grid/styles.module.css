@@ -26,7 +26,7 @@
 }
 
 .excerpt {
-  font-size: 16px;
+  font-size: 1.6rem;
   width: 100%;
   overflow: hidden;
   margin: 0;
@@ -41,7 +41,7 @@
 }
 
 .tags {
-  padding: 0 5px 5px 5px;
+  padding: 0 5px 2em 5px;
 }
 
 .divider {

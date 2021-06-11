@@ -1,7 +1,7 @@
 import React from "react"
 import * as css from "./css.module.css"
 
-const Card = ({ children, padding }) => {
+const Card = ({ children, padding, maxWidth }) => {
   const handleStyling = () => {
     switch (padding) {
       case "medium":
@@ -12,7 +12,14 @@ const Card = ({ children, padding }) => {
         return css.small
     }
   }
-  return <div className={`${css.container} ${handleStyling()}`}>{children}</div>
+  return (
+    <div
+      className={`${css.container} ${handleStyling()}`}
+      style={maxWidth ? { maxWidth } : null}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default Card
