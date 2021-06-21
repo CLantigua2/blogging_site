@@ -10,8 +10,9 @@ module.exports = {
     title: "Carlos Lantigua",
     titleTemplate: "Random Tech Stuff",
     author: "Carlos Lantigua",
-    url: "http://www.thebrowndev.com",
-    image: `${__dirname}/src/images/me.jpg`,
+    url: "https://www.thebrowndev.com",
+    twitterUsername: "CodeLantigua",
+    image: `/src/images/me.jpg`,
     description:
       "This site will be used to dump all of my blogs and projects. A place to keep track of my progression and learnings throughout my time as a Software Developer.",
     social: [
@@ -26,6 +27,33 @@ module.exports = {
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "GA-G-WXET1E910R", // Google Analytics / GA
+          "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+          "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        // gtagConfig: {
+        //   optimize_id: "OPT_CONTAINER_ID",
+        //   anonymize_ip: true,
+        //   cookie_expires: 0,
+        // },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          // respectDNT: true,
+          // // Avoids sending pageview hits from custom paths
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
@@ -45,6 +73,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-social-cards`,
           {
             resolve: `gatsby-remark-images`,
           },
@@ -97,7 +126,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "src/utils/typography",
+        pathToConfigModule: `${__dirname}/src/utils/typography`,
       },
     },
     {
@@ -119,6 +148,7 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -128,7 +158,7 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: "src/images/Carlos-Lantigua-midcrop-small.jpg",
+        icon: `src/images/Carlos-Lantigua-midcrop-small.jpg`,
       },
     },
   ],

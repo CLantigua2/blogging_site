@@ -16,8 +16,8 @@ export const Navigation = ({ toggle }) => {
   const navItems = [
     { name: "Home", to: "/" },
     { name: "About", to: "/about" },
-    { name: "Articles", to: "/articles" },
     { name: "Contact", to: "/contact" },
+    { name: "Bored", to: "/bored" },
   ]
   return (
     <motion.ul variants={variants} className={`link_list ${css.ul}`}>

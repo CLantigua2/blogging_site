@@ -1,13 +1,13 @@
 .wrapper {
   height: 100%;
+  width: 100%;
   margin: 0 auto;
-  background: var(--color-background);
+  /* background: var(--color-background); */
   color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  overflow: hidden;
 }
 
 .player_main_control {
@@ -21,6 +21,9 @@
   background-color: hsla(217, 89%, 61%, 1);
   color: white;
   border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+    rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+  z-index: 1;
 }
 
 .control_play_pause {
@@ -37,4 +40,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.read_spectrum__pause {
+  width: 800px;
+  transition: 3s all ease-in;
+}
+
+.read_spectrum__play {
+  width: 0%;
+  overflow: hidden;
+  transition: 3s all ease-out;
 }

@@ -8,6 +8,12 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: gray;
+}
+
+.reader_wrapper {
+  margin: 1em 0;
+  width: 100%;
+  border-radius: 30px;
 }

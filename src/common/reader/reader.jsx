@@ -2,53 +2,40 @@ import React, { useState, useEffect } from "react"
 import * as css from "./styles.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay"
-import AnimatedWave from "../../common/animated-wave"
-import SpeechSynth from "../../utils/speech-synth"
-
-const speechSynthesis = new SpeechSynth()
+import AnimatedWave from "../animated-wave"
+import ReadSpectrum from "../read-spectrum"
+import { speak } from "../../utils/speech-synth"
 
 const Reader = ({ textToRead }) => {
+  const [text, setText] = useState("")
   const [playStatus, setPlayStatus] = useState("_play")
-  const [playing, setPlaying] = useState(false)
 
-  // useEffect(() => {
-  //   if (window) {
-  //     setPlaying(window.speechSynthesis.speaking)
-  //   }
-  // }, [])
-
+  // remove all HTML tags from text sample
   useEffect(() => {
-    if (typeof window !== undefined) {
-      speechSynthesis.loadProps({
-        text: textToRead,
-        voice: 2,
-        pitch: 1,
-        resume: playStatus === "_pause",
-        lang: "en-US",
-      })
-    }
-  }, [playStatus, textToRead])
+    const tmp = document.createElement("DIV")
+    tmp.innerHTML = textToRead
+    setText(tmp.textContent || tmp.innerText || "")
+  }, [textToRead])
 
   const handleClick = () => {
-    speechSynthesis.speak()
-    // setPlayStatus(prev => {
-    //   if (prev === "_play") {
-    //     if (!playing) {
-    //       speechSynthesis.speak()
-    //     } else {
-    //       speechSynthesis.resume()
-    //     }
-    //     return "_pause"
-    //   }
-    //   speechSynthesis.pause()
-    //   return "_play"
-    // })
+    speechSynthesis.cancel()
+    setPlayStatus(prev => {
+      if (prev === "_play") {
+        speak(text, setPlayStatus)
+        return "_pause"
+      }
+      return "_play"
+    })
   }
 
-  useEffect(() => {
-    if (playStatus === "_pause") {
-    }
-  }, [playStatus, textToRead])
+  const readDuration = () => {
+    let timeToRead = 0
+    text
+      .split(" ")
+      .filter(Boolean)
+      .forEach((w, i) => (i % 3 === 0 ? timeToRead++ : null))
+    return timeToRead
+  }
 
   return (
     <div className={css.loader}>
@@ -69,6 +56,10 @@ const Reader = ({ textToRead }) => {
             </div>
           </div>
         </div>
+        <ReadSpectrum
+          readDuration={readDuration()}
+          loaded={playStatus === "_pause"}
+        />
       </div>
     </div>
   )

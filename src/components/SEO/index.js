@@ -1,1 +1,1 @@
-export { default } from "./SEO.js"
+export { default } from "./Seo.js"

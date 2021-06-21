@@ -24,7 +24,7 @@ const ReadProgress = ({ parentWidth }) => {
         transform: `scaleX(${Math.round((currYProgress / 1) * 100) / 100})`,
         backgroundImage:
           "linear-gradient(to right, rgba(0,0,255,1), rgba(0,255,0,1))",
-        fontSize: 40,
+        fontSize: "4rem",
         fontFamily: "sans-serif",
         zIndex: 5,
         opacity: 0.5,
