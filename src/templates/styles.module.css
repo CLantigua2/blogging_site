@@ -11,3 +11,9 @@
   font-size: 1.6rem;
   color: gray;
 }
+
+.reader_wrapper {
+  margin: 1em 0;
+  width: 100%;
+  border-radius: 30px;
+}

@@ -5,9 +5,11 @@ import * as css from "./styles.module.css"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import Card from "../common/card"
 import Seo from "../components/seo"
-import ReadProgress from "../common/read-progress/read-progress"
+import ReadProgress from "../components/read-progress/read-progress"
 import { useDimensions } from "../hooks/use-dimensions"
+// import Reader from "../components/reader"
 import ShareButtons from "../components/share-buttons"
+import Reader from "../common/reader/reader"
 
 export default function Article({ data, location }) {
   const parentRef = useRef(null)
@@ -21,6 +23,8 @@ export default function Article({ data, location }) {
   const title = `Read ${post.frontmatter.title} `
   const tags = post.frontmatter.tags.split(",").map(tag => tag.trim())
   const url = location.href
+  const description = post.frontmatter.description
+  const image = post.frontmatter.image
   const twitterHandle = "CodeLantigua"
 
   const formatTimeToRead = time => {
@@ -30,9 +34,15 @@ export default function Article({ data, location }) {
     }
     return result
   }
+
   return (
     <>
-      <Seo />
+      <Seo
+        title={title}
+        description={description}
+        image={image}
+        article={true}
+      />
       <Layout tags={post.frontmatter.tags} ref={parentRef}>
         <Card>
           <ReadProgress parentWidth={width} />
@@ -49,6 +59,9 @@ export default function Article({ data, location }) {
             <div className={css.sub_header}>
               <p>Read Time: {formatTimeToRead(post.timeToRead)}</p>
               <p>Posted {post.frontmatter.date}</p>
+            </div>
+            <div className={css.reader_wrapper}>
+              <Reader textToRead={post.html} />
             </div>
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </section>
@@ -71,10 +84,13 @@ export const query = graphql`
         slug
       }
       frontmatter {
+        image
+        description
         title
         tags
         date(formatString: "DD MMMM, YYYY")
       }
+      rawMarkdownBody
     }
   }
 `

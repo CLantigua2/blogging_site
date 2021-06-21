@@ -9,7 +9,6 @@ import Seo from "../components/seo"
 
 export default function Home({ data }) {
   const [scrollTo, setScrollTo] = useState(null)
-
   return (
     <>
       <Seo />

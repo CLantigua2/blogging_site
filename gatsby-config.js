@@ -10,8 +10,9 @@ module.exports = {
     title: "Carlos Lantigua",
     titleTemplate: "Random Tech Stuff",
     author: "Carlos Lantigua",
-    url: "http://www.thebrowndev.com",
-    image: `${__dirname}/src/images/me.jpg`,
+    url: "https://www.thebrowndev.com",
+    twitterUsername: "CodeLantigua",
+    image: `/src/images/me.jpg`,
     description:
       "This site will be used to dump all of my blogs and projects. A place to keep track of my progression and learnings throughout my time as a Software Developer.",
     social: [
@@ -125,7 +126,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "src/utils/typography",
+        pathToConfigModule: `${__dirname}/src/utils/typography`,
       },
     },
     {
@@ -157,7 +158,7 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: "src/images/Carlos-Lantigua-midcrop-small.jpg",
+        icon: `src/images/Carlos-Lantigua-midcrop-small.jpg`,
       },
     },
   ],
