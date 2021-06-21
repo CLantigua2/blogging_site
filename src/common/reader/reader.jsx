@@ -19,13 +19,15 @@ const Reader = ({ textToRead }) => {
 
   const handleClick = () => {
     speechSynthesis.cancel()
-    setPlayStatus(prev => {
-      if (prev === "_play") {
-        speak(text, setPlayStatus)
-        return "_pause"
-      }
-      return "_play"
-    })
+    if (typeof window !== "undefined") {
+      setPlayStatus(prev => {
+        if (prev === "_play") {
+          speak(text, setPlayStatus, window.speechSynthesis)
+          return "_pause"
+        }
+        return "_play"
+      })
+    }
   }
 
   const readDuration = () => {

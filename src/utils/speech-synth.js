@@ -1,9 +1,8 @@
-const synth = window.speechSynthesis
 const pitch = 1
 const rate = 1
 
 // get all voices from speechsynth
-function populateVoiceList() {
+function populateVoiceList(synth) {
   const voices = synth.getVoices().sort(function (a, b) {
     const aname = a.name.toUpperCase()
     const bname = b.name.toUpperCase()
@@ -15,8 +14,8 @@ function populateVoiceList() {
 }
 
 // the func that will be called
-export function speak(textToRead, onEndCallback) {
-  const voices = populateVoiceList()
+export function speak(textToRead, onEndCallback, synth) {
+  const voices = populateVoiceList(synth)
   if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = populateVoiceList
   }
