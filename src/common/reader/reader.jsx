@@ -18,6 +18,7 @@ const Reader = ({ textToRead }) => {
   }, [textToRead])
 
   const handleClick = () => {
+    // NOTE: will cause an error if this cancel isn't here
     speechSynthesis.cancel()
     if (typeof window !== "undefined") {
       setPlayStatus(prev => {
@@ -28,15 +29,7 @@ const Reader = ({ textToRead }) => {
         return "_play"
       })
     }
-  }
-
-  const readDuration = () => {
-    let timeToRead = 0
-    text
-      .split(" ")
-      .filter(Boolean)
-      .forEach((w, i) => (i % 3 === 0 ? timeToRead++ : null))
-    return timeToRead
+    return "_play"
   }
 
   return (
@@ -45,7 +38,7 @@ const Reader = ({ textToRead }) => {
         <div
           className={css.player_main_control}
           onClick={() => handleClick()}
-          onKeyPress={() => handleClick}
+          onKeyPress={() => handleClick()}
           aria-hidden="true"
         >
           <div className={css.control_play_pause}>
@@ -58,10 +51,7 @@ const Reader = ({ textToRead }) => {
             </div>
           </div>
         </div>
-        <ReadSpectrum
-          readDuration={readDuration()}
-          loaded={playStatus === "_pause"}
-        />
+        <ReadSpectrum loaded={playStatus === "_pause"} />
       </div>
     </div>
   )

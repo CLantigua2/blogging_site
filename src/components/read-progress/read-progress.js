@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { motion, useViewportScroll } from "framer-motion"
 import * as css from "./styles.module.css"
 
-const ReadProgress = ({ parentWidth }) => {
+const ReadProgress = () => {
   const { scrollYProgress } = useViewportScroll()
   const [currYProgress, setCurrYProgress] = useState(scrollYProgress)
 

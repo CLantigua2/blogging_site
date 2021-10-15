@@ -88,6 +88,7 @@ export const query = graphql`
         description
         title
         tags
+        readDuration
         date(formatString: "DD MMMM, YYYY")
       }
       rawMarkdownBody

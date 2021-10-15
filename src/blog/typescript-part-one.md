@@ -4,6 +4,7 @@ description: We'll take a high level view of what we can get from using a typed 
 date: "2021-05-24"
 image: https://www.singlestoneconsulting.com/wp-content/uploads/2021/05/TypeScriptBanner1.png
 tags: typescript, javascript
+readDuration: "16"
 ---
 
 ![](https://www.singlestoneconsulting.com/wp-content/uploads/2021/05/TypeScriptBanner1.png)

@@ -27,6 +27,14 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
     }
     return () => clearTimeout(timer)
   }, [scrollTo, setScrollTo])
+  
+  useEffect(() => {
+    // stop speechsynth on page load
+    const isBroswer = typeof window !== undefined
+    if (isBroswer) {
+      speechSynthesis.cancel()
+    }
+  }, [])
 
   const data = useStaticQuery(
     graphql`
