@@ -1,6 +1,8 @@
 import React from "react"
 import Layout from "../common/layout"
-import { graphql, Link } from "gatsby"
+// TODO: remove gatsby imports
+// import { graphql } from "gatsby"
+import Link from 'next/link'
 import Card from "../common/card"
 import CardContent from "../common/card-content/card-content"
 import Seo from "../components/seo"
@@ -27,25 +29,29 @@ export default function Home({ data }) {
 
               <div style={{ display: "flex", alignItems: "center" }}>
                 <Link
-                  to="https://www.linkedin.com/in/carlos-lantigua/"
+                  href="https://www.linkedin.com/in/carlos-lantigua/"
                   style={{
                     backgroundImage: "none",
                     margin: "1em",
                   }}
                 >
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    style={{ width: 50, height: 50, color: "#0C66C2" }}
-                  />
+                  <a>
+                    <FontAwesomeIcon
+                      icon={faLinkedin}
+                      style={{ width: 50, height: 50, color: "#0C66C2" }}
+                    />
+                  </a>
                 </Link>
                 <Link
-                  to="https://twitter.com/CodeLantigua"
+                  href="https://twitter.com/CodeLantigua"
                   style={{ backgroundImage: "none" }}
                 >
-                  <FontAwesomeIcon
-                    icon={faTwitter}
-                    style={{ width: 50, height: 50, color: "#1DA1F1" }}
-                  />
+                  <a>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      style={{ width: 50, height: 50, color: "#1DA1F1" }}
+                    />
+                  </a>
                 </Link>
               </div>
               <form

@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
 // import * as styles from "./index.module.css"
 import ScrollContext from "../../context/scrollContext"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 const ListLink = ({
-  to,
+  href,
   isMenuOpen,
   toggle,
   scrollButton,
@@ -15,7 +15,7 @@ const ListLink = ({
   return (
     <li>
       <Link
-        to={to}
+        href={href}
         onClick={e => {
           if (isMenuOpen !== undefined && isMenuOpen === true) {
             toggle(false)
@@ -30,7 +30,7 @@ const ListLink = ({
           return
         }}
       >
-        {children}
+        <a>{children}</a>
       </Link>
     </li>
   )

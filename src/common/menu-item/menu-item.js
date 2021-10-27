@@ -1,7 +1,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import * as css from "./styles.module.css"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 const variants = {
   open: {
@@ -20,7 +20,7 @@ const variants = {
   },
 }
 
-const MenuItem = ({ i, to, text, toggleOpen }) => {
+const MenuItem = ({ i, href, text, toggleOpen }) => {
   const handleClick = () => {
     if (typeof toggleOpen !== undefined) {
       toggleOpen()
@@ -33,8 +33,8 @@ const MenuItem = ({ i, to, text, toggleOpen }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Link to={to} onClick={() => handleClick()}>
-        {text}
+      <Link href={href} onClick={() => handleClick()}>
+        <a>{text}</a>
       </Link>
     </motion.li>
   )

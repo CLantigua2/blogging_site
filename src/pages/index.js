@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Layout from "../common/layout"
-import { graphql } from "gatsby"
+// import { graphql } from "gatsby"
 import ArticleGrid from "../components/article-grid"
 import ScrollContext from "../context/scrollContext"
 import Card from "../common/card"
@@ -47,26 +47,26 @@ export default function Home({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            image
-            title
-            description
-            tags
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 30)
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+//       totalCount
+//       edges {
+//         node {
+//           id
+//           frontmatter {
+//             image
+//             title
+//             description
+//             tags
+//             date(formatString: "DD MMMM, YYYY")
+//           }
+//           fields {
+//             slug
+//           }
+//           excerpt(pruneLength: 30)
+//         }
+//       }
+//     }
+//   }
+// `

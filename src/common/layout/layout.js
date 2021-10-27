@@ -1,15 +1,18 @@
 import React, { useEffect, useContext } from "react"
 import ListLink from "../../components/listlink"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import Link from "next/link"
+import Image from "next/image"
+// TODO: remove gatsby imports
+// import { useStaticQuery, graphql } from "gatsby"
 import * as css from "./index.module.css"
 import ScrollContext from "../../context/scrollContext"
-import { StaticImage } from "gatsby-plugin-image"
 import DarkToggle from "../dark-toggle/dark-toggle"
 import Pill from "../pill"
 import Overlay from "../overlay"
 import { PageTransition } from "../../common/spring-animation"
-import Resume from "../../media/Carlos Lantigua New Resume.pdf"
+// import Resume from "../../media/Carlos Lantigua New Resume.pdf"
 import Footer from "../../components/footer"
+import headCrop from "../../images/Carlos-Lantigua-headcrop-small.jpg"
 
 const Layout = React.forwardRef(({ children, tags }, ref) => {
   const [scrollTo, setScrollTo] = useContext(ScrollContext)
@@ -27,7 +30,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
     }
     return () => clearTimeout(timer)
   }, [scrollTo, setScrollTo])
-  
+
   useEffect(() => {
     // stop speechsynth on page load
     const isBroswer = typeof window !== undefined
@@ -36,17 +39,24 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
     }
   }, [])
 
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `
-  )
+  // const data = useStaticQuery(
+  //   graphql`
+  //     query {
+  //       site {
+  //         siteMetadata {
+  //           title
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
+
+  const loadPdfPage = () => {
+    const file = new Blob([Resume], { type: "application/pdf" })
+    const fileUrl = URL.createObjectURL(file)
+    const pdfWindow = window.open()
+    pdfWindow.location.href = fileUrl
+  }
 
   return (
     <div className={css.content_separator}>
@@ -54,8 +64,8 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
         <div className={css.left_side}>
           <div className={css.left_wrapper}>
             <div className={css.left_side_image_container}>
-              <StaticImage
-                src="../../images/Carlos-Lantigua-headcrop-small.jpg"
+              <Image
+                src={headCrop}
                 alt="Carlos Lantigua"
                 width={75}
                 height={80}
@@ -72,17 +82,25 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
               />
             </div>
             <header className={css.layout_header}>
-              <Link to="/" className={css.layout_title_link}>
-                <h3 className={css.layout_title} aria-live="assertive">
-                  {data.site.siteMetadata.title}
-                </h3>
+              <Link href="/" className={css.layout_title_link}>
+                <a>
+                  <h3 className={css.layout_title} aria-live="assertive">
+                    {/* {data.site.siteMetadata.title} */}
+                    fake data FIXME:
+                  </h3>
+                </a>
               </Link>
               <ul className={`link_list ${css.desktopOnly} `}>
-                <ListLink to="/">Home</ListLink>
-                <ListLink to="/about/">About</ListLink>
+                <ListLink href="/">
+                  <a>Home</a>
+                </ListLink>
+                <ListLink href="/about/">
+                  <a>About</a>
+                </ListLink>
                 <li>
                   <a
-                    href={Resume}
+                    onClick={() => loadPdfPage()}
+                    // href={Resume}
                     without
                     target="_blank"
                     rel="noopener noreferrer"
@@ -90,8 +108,12 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
                     Resume
                   </a>
                 </li>
-                <ListLink to="/contact/">Contact</ListLink>
-                <ListLink to="/bored/">Bored</ListLink>
+                <ListLink href="/contact/">
+                  <a>Contact</a>
+                </ListLink>
+                <ListLink href="/bored/">
+                  <a>Bored</a>
+                </ListLink>
               </ul>
             </header>
             <div className={css.mobileOnly}>

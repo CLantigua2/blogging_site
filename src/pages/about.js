@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../common/layout"
-import { graphql } from "gatsby"
 import Card from "../common/card"
 import ParallaxImage from "../components/parallax-image"
 import CardContent from "../common/card-content/card-content"
@@ -127,12 +126,12 @@ export default function About({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//   }
+// `

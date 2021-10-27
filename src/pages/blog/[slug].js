@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-// import { graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../common/layout"
 import * as css from "./styles.module.css"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
@@ -10,8 +10,11 @@ import { useDimensions } from "../hooks/use-dimensions"
 // import Reader from "../components/reader"
 import ShareButtons from "../components/share-buttons"
 import Reader from "../common/reader/reader"
+import remark from "remark"
+import html from "remark-html"
+import { getAllPosts, getPostBySlug } from "../../lib/blog"
 
-export default function Article({ data, location }) {
+const Post = ({ post }) => {
   const parentRef = useRef(null)
   const { width } = useDimensions(parentRef)
 
@@ -75,23 +78,53 @@ export default function Article({ data, location }) {
   )
 }
 
-// export const query = graphql`
-//   query($slug: String!) {
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       html
-//       timeToRead
-//       fields {
-//         slug
-//       }
-//       frontmatter {
-//         image
-//         description
-//         title
-//         tags
-//         readDuration
-//         date(formatString: "DD MMMM, YYYY")
-//       }
-//       rawMarkdownBody
-//     }
-//   }
-// `
+export async function getStaticPaths() {
+  const posts = getAllPosts()
+
+  return {
+    paths: posts.map(post => {
+      return {
+        params: {
+          slug: post.slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const post = getPostBySlug(params.slug)
+  const markdown = await remark()
+    .use(html)
+    .process(post.content || "")
+  const content = markdown.toString()
+  return {
+    props: {
+      ...post,
+      content,
+    },
+  }
+}
+
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      timeToRead
+      fields {
+        slug
+      }
+      frontmatter {
+        image
+        description
+        title
+        tags
+        readDuration
+        date(formatString: "DD MMMM, YYYY")
+      }
+      rawMarkdownBody
+    }
+  }
+`
+export default Post

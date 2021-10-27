@@ -4,7 +4,7 @@ import Card from "../common/card"
 import CardContent from "../common/card-content/card-content"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import Image from "next/image"
 import { useDimensions } from "../hooks/use-dimensions"
 
 export default function Bored({ data }) {
@@ -92,7 +92,7 @@ export default function Bored({ data }) {
 
               <div className="gallery">
                 {images.map(({ id, fluid }) => (
-                  <Img key={id} fluid={fluid} onClick={e => zoomImage(e)} />
+                  <Image key={id} fluid={fluid} onClick={e => zoomImage(e)} />
                 ))}
               </div>
             </div>
@@ -103,22 +103,22 @@ export default function Bored({ data }) {
   )
 }
 
-export const query = graphql`
-  query MyQuery {
-    allFile(
-      filter: {
-        extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
-        absolutePath: { regex: "/images/art/" }
-      }
-    ) {
-      nodes {
-        id
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query MyQuery {
+//     allFile(
+//       filter: {
+//         extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
+//         absolutePath: { regex: "/images/art/" }
+//       }
+//     ) {
+//       nodes {
+//         id
+//         childImageSharp {
+//           fluid {
+//             ...GatsbyImageSharpFluid
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

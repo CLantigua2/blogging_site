@@ -6,47 +6,22 @@
   "license": "0BSD",
   "scripts": {
     "deploy": "gatsby-plugin-s3 deploy",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "dependencies": {
-    "@browniebroke/gatsby-image-gallery": "^6.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "data-fns": "^0.1.8",
     "framer-motion": "^4.1.4",
-    "gatsby": "^3.7.1",
-    "gatsby-image": "^2.11.0",
-    "gatsby-plugin-disqus": "^1.2.2",
-    "gatsby-plugin-fontawesome-css": "^1.1.0",
-    "gatsby-plugin-google-gtag": "^3.7.0",
-    "gatsby-plugin-image": "^1.1.2",
-    "gatsby-plugin-manifest": "^3.2.0",
-    "gatsby-plugin-polyfill-io": "^1.1.0",
-    "gatsby-plugin-s3": "^0.3.8",
-    "gatsby-plugin-sharp": "^3.7.1",
-    "gatsby-plugin-transition-link": "^1.20.5",
-    "gatsby-plugin-typography": "^3.2.0",
-    "gatsby-remark-images": "^4.2.0",
-    "gatsby-remark-images-contentful": "^3.2.0",
-    "gatsby-remark-lazy-load": "^1.0.2",
-    "gatsby-remark-prismjs": "^4.2.0",
-    "gatsby-remark-social-cards": "^0.4.1",
-    "gatsby-source-contentful": "^5.2.0",
-    "gatsby-source-filesystem": "^3.2.0",
-    "gatsby-transformer-pdf": "^1.0.8",
-    "gatsby-transformer-remark": "^3.2.0",
-    "gatsby-transformer-sharp": "^2.12.1",
-    "lazysizes": "^5.3.2",
+    "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
-    "prismjs": "^1.23.0",
+    "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
@@ -54,6 +29,9 @@
     "react-spring": "^9.1.1",
     "react-typography": "^0.16.19",
     "react-visibility-sensor": "^5.1.1",
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0",
+    "sass": "^1.43.2",
     "terser": "^4.8.0",
     "typography": "^0.16.19",
     "typography-theme-fairy-gates": "^0.16.19"
@@ -62,12 +40,5 @@
     "@babel/polyfill": "^7.12.1",
     "prettier": "2.2.1",
     "resize-observer-polyfill": "^1.5.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
