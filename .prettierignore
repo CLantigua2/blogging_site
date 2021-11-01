@@ -1,8 +1,5 @@
-.cache
-package.json
-package-lock.json
-yarn-locak.json
-public
-node_modules
-src/blog
-.next
+# Add files here to ignore them for prettier formatting
+
+/dist
+/coverage
+/docs
