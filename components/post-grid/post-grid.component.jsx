@@ -46,13 +46,13 @@ export default function ArticleGrid({ articles }) {
             <Card key={node.id} maxWidth={435}>
               <Link className={css.card_link} to={node.fields.slug}>
                 {node.frontmatter.image ? (
-                  <img
+                  <Image
                     src={node.frontmatter.image}
                     className={`${css.image} lazyload`}
                     alt={node.title}
                   />
                 ) : (
-                  <Img
+                  <Image
                     height={150}
                     src="../../images/placeholder.jpg"
                     alt="placeholder unicorn"

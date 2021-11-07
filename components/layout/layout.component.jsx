@@ -1,9 +1,9 @@
-import { useEffect, useContext } from "react";
-import * as css from "./layout.module.css";
-import ListLink from "../listlink";
-import Image from "next/image";
-import Link from "next/link";
-import ScrollContext from "../../context/scroll";
+import React, { useEffect, useContext } from 'react';
+import * as css from './layout.module.css';
+import ListLink from '../listlink';
+import Image from 'next/image';
+import Link from 'next/link';
+import ScrollContext from '../../context/scroll';
 
 const Layout = React.forwardRef(({ children, tags }, ref) => {
   const [scrollTo, setScrollTo] = useContext(ScrollContext);
@@ -14,7 +14,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
     if (scrollTo && isBrowser) {
       const element = document.getElementById(scrollTo);
       window.scrollTo({
-        behavior: "smooth",
+        behavior: 'smooth',
         top: element.offsetTop,
       });
     }
@@ -42,11 +42,11 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
                 layout="fixed"
                 placeholder="avatar"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "65% 75%",
-                  filter: "grayscale(1)",
-                  objectFit: "cover",
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '65% 75%',
+                  filter: 'grayscale(1)',
+                  objectFit: 'cover',
                 }}
                 className={css.avatar}
               />
@@ -88,7 +88,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
         </div>
         <div
           className={`${css.panel_container} ${css.desktopOnly}`}
-          style={{ width: tags ? "14%" : "7%" }}
+          style={{ width: tags ? '14%' : '7%' }}
         >
           <div className={css.pill_container}>
             <DarkToggle />
@@ -96,7 +96,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
               <>
                 <h3 className={css.tag_title}>Tags</h3>
                 <br />
-                {tags?.split(",").map((t, i) => {
+                {tags?.split(',').map((t, i) => {
                   return <Pill key={i} text={t} />;
                 })}
               </>

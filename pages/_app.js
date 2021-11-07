@@ -1,12 +1,7 @@
-import { ThemeProvider } from '../context/theme';
-import '../styles/globals.css';
+import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
