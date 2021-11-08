@@ -11,7 +11,7 @@ const initialState = {
   setColorMode: () => {},
 };
 
-const ThemeContext = React.createContext(initialState);
+export const ThemeContext = React.createContext(initialState);
 
 export const ThemeProvider = ({ children }) => {
   const [colorMode, rawSetColorMode] = React.useState(undefined);

@@ -4,9 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { ScrollContext } from '../context/scroll';
-import { Layout } from '../components/layout';
-import { Card } from '../components/card';
-import { CardContent } from '../components/card-content';
+import Layout from '../components/layout';
+import Card from '../components/card';
+import CardContent from '../components/card-content';
 
 export default function Home({ posts }) {
   const [scrollTo, setScrollTo] = useState(0);
@@ -42,7 +42,6 @@ export default function Home({ posts }) {
           </Card>
         </div>
       </Layout>
-      <h2>Hello</h2>
     </div>
   );
 }

@@ -4,6 +4,10 @@ import ListLink from '../listlink';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollContext from '../../context/scroll';
+import ColorToggle from '../color-toggle';
+import Overlay from '../overlay';
+import PageTransition from '../page-transition';
+import Footer from '../footer';
 
 const Layout = React.forwardRef(({ children, tags }, ref) => {
   const [scrollTo, setScrollTo] = useContext(ScrollContext);
@@ -35,7 +39,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
           <div className={css.left_wrapper}>
             <div className={css.left_side_image_container}>
               <Image
-                src="../../images/Carlos-Lantigua-headcrop-small.jpg"
+                src="/../../images/Carlos-Lantigua-headcrop-small.jpg"
                 alt="Carlos Lantigua"
                 width={75}
                 height={80}
@@ -51,7 +55,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
                 className={css.avatar}
               />
             </div>
-            <header className={css.layout_header}>
+            {/* <header className={css.layout_header}>
               <Link href="/" className={css.layout_title_link}>
                 <h3 className={css.layout_title} aria-live="assertive">
                   {data.site.siteMetadata.title}
@@ -73,9 +77,9 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
                 <ListLink to="/contact/">Contact</ListLink>
                 <ListLink to="/bored/">Bored</ListLink>
               </ul>
-            </header>
+            </header> */}
             <div className={css.mobileOnly}>
-              <DarkToggle />
+              <ColorToggle />
             </div>
             <div className={css.mobileOnly}>
               <Overlay />
@@ -91,7 +95,7 @@ const Layout = React.forwardRef(({ children, tags }, ref) => {
           style={{ width: tags ? '14%' : '7%' }}
         >
           <div className={css.pill_container}>
-            <DarkToggle />
+            <ColorToggle />
             {tags ? (
               <>
                 <h3 className={css.tag_title}>Tags</h3>

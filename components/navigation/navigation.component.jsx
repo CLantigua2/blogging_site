@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import MenuItem from '../menu-item';
-import * as css from './styles.module.css';
+import * as css from './navigation.styles.module.css';
 
 const variants = {
   open: {

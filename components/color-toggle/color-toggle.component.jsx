@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { ThemeContext } from "../../context/darkModeContext";
+import { ThemeContext } from '../../context/theme';
 import * as css from "./color-toggle.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";

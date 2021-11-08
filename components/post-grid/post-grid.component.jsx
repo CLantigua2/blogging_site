@@ -54,7 +54,7 @@ export default function ArticleGrid({ articles }) {
                 ) : (
                   <Image
                     height={150}
-                    src="../../images/placeholder.jpg"
+                    src="/../../images/placeholder.jpg"
                     alt="placeholder unicorn"
                     layout="fullWidth"
                   />

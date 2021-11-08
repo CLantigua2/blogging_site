@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import * as css from './menu-items.styles.module.css';
-import { Link } from 'gatsby';
+import * as css from './menu-item.styles.module.css';
+import Link from 'next/link';
 
 const variants = {
   open: {
